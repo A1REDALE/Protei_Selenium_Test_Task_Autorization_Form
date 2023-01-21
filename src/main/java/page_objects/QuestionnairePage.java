@@ -43,7 +43,7 @@ public class QuestionnairePage {
     @FindBy(xpath = ".//*[@id='dataSend']")
     private WebElement submitButton;
 
-    @FindBy(className = "uk-modal-dialog")
+    @FindBy(css= ".uk-margin.uk-modal-content")
     private WebElement addDataConfirm;
 
     @FindBy(css = ".uk-modal-close")

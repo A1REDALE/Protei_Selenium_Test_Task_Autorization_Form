@@ -2,8 +2,11 @@ import org.apache.maven.surefire.shared.lang3.RandomStringUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import page_objects.AuthPage;
 import page_objects.QuestionnairePage;
 
@@ -31,7 +34,7 @@ public class QuestionnaireTest {
     }
 
     @Test
-    public void allFieldsAreAdd(){
+    public void allFieldsAddCorrect(){
         questionnairePage.fillEmail(RandomStringUtils.randomAlphabetic(4) + "@protei.ru")
                 .fillName(RandomStringUtils.randomAlphabetic(6))
                 .chooseGenderWomen()
@@ -39,6 +42,8 @@ public class QuestionnaireTest {
                 .chooseDataCheck12()
                 .chooseDataSelect23()
                 .clickSubmitButton();
+        new WebDriverWait(driver, 3)
+                .until(ExpectedConditions.elementToBeClickable(By.cssSelector(".uk-margin.uk-modal-content")));
         boolean result = questionnairePage.addDataConfirm();
         assertTrue(result);
     }
