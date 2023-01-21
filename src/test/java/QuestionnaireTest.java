@@ -43,7 +43,7 @@ public class QuestionnaireTest {
                 .chooseDataSelect23()
                 .clickSubmitButton();
         new WebDriverWait(driver, 3)
-                .until(ExpectedConditions.elementToBeClickable(By.cssSelector(".uk-margin.uk-modal-content")));
+                .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".uk-margin.uk-modal-content")));
         boolean result = questionnairePage.addDataConfirm();
         assertTrue(result);
     }
@@ -73,7 +73,7 @@ public class QuestionnaireTest {
                 .fillName(RandomStringUtils.randomAlphabetic(6))
                 .chooseGenderWomen()
                 .chooseDataCheck12()
-                .chooseDataSelect23()
+                .chooseDataSelect22()
                 .clickSubmitButton();
         boolean result = questionnairePage.emailError();
         assertTrue(result);
