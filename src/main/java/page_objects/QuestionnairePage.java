@@ -6,9 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-
 public class QuestionnairePage {
-
     public QuestionnairePage(WebDriver driver){
         this.driver =driver;
         PageFactory.initElements(driver,this);
@@ -18,42 +16,30 @@ public class QuestionnairePage {
 
     @FindBy(xpath = ".//*[@id='dataEmail']")
     private WebElement inputEmail;
-
     @FindBy(xpath = ".//*[@id='dataName']")
     private WebElement inputName;
-
     @FindBy(xpath = ".//*[@id='dataGender']")
     private WebElement chooseGender;
-
     @FindBy(xpath = ".//*[@id='dataCheck11']")
     private WebElement dataCheck11;
-
     @FindBy(xpath = ".//*[@id='dataCheck12']")
     private WebElement dataCheck12;
-
     @FindBy(xpath = ".//*[@id='dataSelect21']")
     private WebElement dataSelect21;
-
     @FindBy(xpath = ".//*[@id='dataSelect22']")
     private WebElement dataSelect22;
-
     @FindBy(xpath = ".//*[@id='dataSelect23']")
     private WebElement dataSelect23;
-
     @FindBy(xpath = ".//*[@id='dataSend']")
     private WebElement submitButton;
-
     @FindBy(css= ".uk-margin.uk-modal-content")
     private WebElement addDataConfirm;
-
     @FindBy(css = ".uk-modal-close")
     private WebElement okButton;
-
     @FindBy(xpath = ".//*[@id='emailFormatError']")
     private  WebElement emailError;
     @FindBy(xpath = ".//*[@id='blankNameError']")
     private WebElement nameError;
-
 
     public QuestionnairePage fillEmail(String email){
         inputEmail.sendKeys(email);
@@ -109,3 +95,4 @@ public class QuestionnairePage {
         return nameError.isDisplayed();
     }
 }
+
