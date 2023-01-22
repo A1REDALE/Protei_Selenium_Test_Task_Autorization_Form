@@ -1,5 +1,6 @@
 package page_objects;
 
+import config.Config;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,9 +11,9 @@ public class QuestionnairePage {
     public QuestionnairePage(WebDriver driver){
         this.driver =driver;
         PageFactory.initElements(driver,this);
+        driver.get(Config.getURL());
     }
     WebDriver driver;
-
     @FindBy(xpath = ".//*[@id='dataEmail']")
     private WebElement inputEmail;
     @FindBy(xpath = ".//*[@id='dataName']")

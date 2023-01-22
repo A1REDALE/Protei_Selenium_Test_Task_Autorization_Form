@@ -1,4 +1,5 @@
 import config.Config;
+
 import org.apache.maven.surefire.shared.lang3.RandomStringUtils;
 import org.junit.After;
 import org.junit.Before;
@@ -10,9 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import page_objects.AuthPage;
 import page_objects.QuestionnairePage;
-
 import java.util.concurrent.TimeUnit;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 

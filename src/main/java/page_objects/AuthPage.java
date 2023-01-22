@@ -1,5 +1,6 @@
 package page_objects;
 
+import config.Config;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,10 +10,9 @@ public class AuthPage {
     public AuthPage (WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver,this);
-        driver.get(URL);
+        driver.get(Config.getURL());
     }
     WebDriver driver;
-    private final String URL = "file:///C:/Users/AIREDALE/Downloads/Telegram%20Desktop/qa-test.html";
     @FindBy(xpath = ".//*[@id='loginEmail']")
     private WebElement inputEmail;
     @FindBy(xpath = ".//*[@id='loginPassword']")
