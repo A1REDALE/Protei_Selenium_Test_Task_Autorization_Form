@@ -1,3 +1,4 @@
+import config.Config;
 import org.apache.maven.surefire.shared.lang3.RandomStringUtils;
 import org.junit.After;
 import org.junit.Before;
@@ -15,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class QuestionnaireTest {
+public class QuestionnairePageTest {
     WebDriver driver;
     AuthPage authPage;
     QuestionnairePage questionnairePage;
@@ -27,7 +28,7 @@ public class QuestionnaireTest {
         driver.manage().window().maximize();
         authPage = new AuthPage(driver);
         questionnairePage = new QuestionnairePage(driver);
-        authPage.fillAuthPage("test@protei.ru","test").authButtonClick();
+        authPage.fillAuthPage(Config.getEmail(), Config.getPassword()).authButtonClick();
     }
     @After
     public void Teardown() {
@@ -36,8 +37,9 @@ public class QuestionnaireTest {
 
     @Test
     public void allFieldsAddCorrect(){
-        questionnairePage.fillEmail("Hi@protei.ru")
-                .fillName("Екатерина")
+        questionnairePage
+                .fillEmail(RandomStringUtils.randomAlphabetic(4) + "@protei.ru")
+                .fillName(RandomStringUtils.randomAlphabetic(6))
                 .chooseGenderWomen()
                 .chooseDataCheck11()
                 .chooseDataSelect23()
@@ -46,20 +48,20 @@ public class QuestionnaireTest {
                 .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".uk-margin.uk-modal-content")));
         boolean result = questionnairePage.addDataConfirm();
         assertTrue(result);
-        assertEquals(driver.findElement(By.xpath(".//*[@id='dataTable']/tbody/tr/td[1]")).getText(),
-                "Hi@protei.ru");
-        assertEquals(driver.findElement(By.xpath(".//*[@id='dataTable']/tbody/tr/td[2]")).getText(),
-                "Екатерина");
-        assertEquals(driver.findElement(By.xpath(".//*[@id='dataTable']/tbody/tr/td[3]")).getText(),
-                "Женский");
-        assertEquals(driver.findElement(By.xpath(".//*[@id='dataTable']/tbody/tr/td[4]")).getText(),
-                "1.1");
-        assertEquals(driver.findElement(By.xpath(".//*[@id='dataTable']/tbody/tr/td[5]")).getText(),
-                "2.3");
+        assertEquals(driver.findElement(By.xpath(".//*[@id='dataEmail']")).getAttribute("value"),
+                driver.findElement(By.xpath(".//*[@id='dataTable']/tbody/tr/td[1]")).getText());
+        assertEquals(driver.findElement(By.xpath(".//*[@id='dataName']")).getAttribute("value"),
+                driver.findElement(By.xpath(".//*[@id='dataTable']/tbody/tr/td[2]")).getText());
+        assertEquals(driver.findElement(By.xpath(".//*[@id='dataGender']")).getAttribute("value"),
+                driver.findElement(By.xpath(".//*[@id='dataTable']/tbody/tr/td[3]")).getText());
+        assertEquals(("1.1"),driver.findElement(By.xpath(".//*[@id='dataTable']/tbody/tr/td[4]")).getText());
+        assertEquals("2.3", driver.findElement(By.xpath(".//*[@id='dataTable']/tbody/tr/td[5]")).getText());
+
     }
     @Test
     public void fillFormWithoutEmail(){
-        questionnairePage.fillName(RandomStringUtils.randomAlphabetic(6))
+        questionnairePage
+                .fillName(RandomStringUtils.randomAlphabetic(6))
                 .chooseGenderWomen()
                 .chooseDataCheck11()
                 .chooseDataSelect21()
@@ -69,7 +71,8 @@ public class QuestionnaireTest {
     }
     @Test
     public void fillFormWithoutName(){
-        questionnairePage.fillEmail(RandomStringUtils.randomAlphabetic(4) + "@protei.ru")
+        questionnairePage
+                .fillEmail(RandomStringUtils.randomAlphabetic(4) + "@protei.ru")
                 .chooseGenderWomen()
                 .chooseDataCheck11()
                 .chooseDataSelect23()
@@ -79,7 +82,8 @@ public class QuestionnaireTest {
     }
     @Test
     public void fillFormWithWrongEmail(){
-        questionnairePage.fillEmail("protei.ru")
+        questionnairePage
+                .fillEmail("protei.ru")
                 .fillName(RandomStringUtils.randomAlphabetic(6))
                 .chooseGenderMen()
                 .chooseDataCheck12()

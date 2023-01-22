@@ -10,7 +10,6 @@ public class QuestionnairePage {
     public QuestionnairePage(WebDriver driver){
         this.driver =driver;
         PageFactory.initElements(driver,this);
-
     }
     WebDriver driver;
 

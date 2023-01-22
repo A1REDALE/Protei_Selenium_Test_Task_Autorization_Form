@@ -17,7 +17,6 @@ import static org.junit.Assert.assertTrue;
 public class AuthPageTest {
     WebDriver driver;
     AuthPage authPage;
-
     @Before
     public void setUp() {
         driver = new ChromeDriver();
@@ -25,7 +24,6 @@ public class AuthPageTest {
         driver.manage().window().maximize();
         authPage = new AuthPage(driver);
     }
-
     @After
     public void Teardown() {
         driver.quit();
@@ -33,19 +31,19 @@ public class AuthPageTest {
 
     @Test
     public void authWithCorrectFields(){
-        authPage.fillAuthPage("test@protei.ru","test").authButtonClick();
+        authPage.fillAuthPage(Config.getEmail(), Config.getPassword()).authButtonClick();
         boolean result = authPage.authSuccess();
         assertTrue(result);
     }
     @Test
     public void AuthWithoutEmail(){
-        authPage.fillAuthPage(Config.getEmptyField(),"test").authButtonClick();
+        authPage.fillAuthPage(Config.getEmptyField(),Config.getPassword()).authButtonClick();
         boolean result = authPage.authSuccess();
         assertFalse(result);
     }
     @Test
     public void AuthWithoutPassword(){
-        authPage.fillAuthPage("test@protei.ru",Config.getEmptyField()).authButtonClick();
+        authPage.fillAuthPage(Config.getEmail(),Config.getEmptyField()).authButtonClick();
         boolean result = authPage.authSuccess();
         assertFalse(result);
     }
@@ -57,13 +55,14 @@ public class AuthPageTest {
     }
     @Test
     public void AuthWithWrongEmail() {
-        authPage.fillAuthPage(RandomStringUtils.randomAlphabetic(4) + "@protei.ru", "test").authButtonClick();
+        authPage.fillAuthPage(RandomStringUtils.randomAlphabetic(4) + "@protei.ru", Config.getPassword())
+                .authButtonClick();
         boolean result = authPage.authSuccess();
         assertFalse(result);
     }
     @Test
     public void AuthWithWrongPassword() {
-        authPage.fillAuthPage("test@protei.ru",RandomStringUtils.randomAlphabetic(4)).authButtonClick();
+        authPage.fillAuthPage(Config.getEmail(),RandomStringUtils.randomAlphabetic(4)).authButtonClick();
         boolean result = authPage.authSuccess();
         assertFalse(result);
     }
