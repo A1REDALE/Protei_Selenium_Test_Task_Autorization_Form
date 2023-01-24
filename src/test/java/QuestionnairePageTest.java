@@ -35,10 +35,10 @@ public class QuestionnairePageTest {
         questionnairePage
                 .fillEmail(Config.randomEmail)
                 .fillName(Config.randomName)
-                .chooseGenderWomen()
+                .chooseGenderWomen(
                 .chooseDataCheck11()
                 .chooseDataSelect23()
-                .clickSubmitButtonWithWat();
+                .clickSubmitButtonWithWait();
         boolean result = questionnairePage.addDataConfirm();
         assertTrue(result);
         assertEquals(questionnairePage.checkInputEmail(), questionnairePage.getAddedEmail());

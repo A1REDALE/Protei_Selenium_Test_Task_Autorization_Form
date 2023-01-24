@@ -94,7 +94,7 @@ public class QuestionnairePage {
         submitButton.click();
         return this;
     }
-    public QuestionnairePage clickSubmitButtonWithWat(){
+    public QuestionnairePage clickSubmitButtonWithWait(){
         submitButton.click();
         new WebDriverWait(driver, 3)
                 .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".uk-margin.uk-modal-content")));
