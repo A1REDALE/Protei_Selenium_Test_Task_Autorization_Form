@@ -48,7 +48,7 @@ public class QuestionnairePageTest {
         assertEquals(questionnairePage.checkInputEmail(), questionnairePage.getAddedEmail());
         assertEquals(questionnairePage.checkInputName(), questionnairePage.getAddedName());
         assertEquals(questionnairePage.checkInputGender(),questionnairePage.getAddedGender());
-        assertEquals(("1.1"),questionnairePage.getAddedDataCheck());
+        assertEquals("1.1",questionnairePage.getAddedDataCheck());
         assertEquals("2.3", questionnairePage.getAddedDataSelect());
     }
     @Test
@@ -77,7 +77,7 @@ public class QuestionnairePageTest {
     public void fillFormWithWrongEmail(){
         questionnairePage
                 .fillEmail(Config.invalidEmail)
-                .fillName(RandomStringUtils.randomAlphabetic(6))
+                .fillName(Config.randomName)
                 .chooseGenderMen()
                 .chooseDataCheck12()
                 .chooseDataSelect22()
