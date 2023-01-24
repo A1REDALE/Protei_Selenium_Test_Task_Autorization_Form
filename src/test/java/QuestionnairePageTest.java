@@ -37,12 +37,12 @@ public class QuestionnairePageTest {
     @Test
     public void allFieldsAddCorrect(){
         questionnairePage
-                .fillEmail(RandomStringUtils.randomAlphabetic(4) + "@protei.ru")
-                .fillName(RandomStringUtils.randomAlphabetic(6))
+                .fillEmail(Config.randomEmail)
+                .fillName(Config.randomName)
                 .chooseGenderWomen()
                 .chooseDataCheck11()
                 .chooseDataSelect23()
-                .clickSubmitButton();
+                .clickSubmitButtonWithWat();
         boolean result = questionnairePage.addDataConfirm();
         assertTrue(result);
         assertEquals(questionnairePage.checkInputEmail(), questionnairePage.getAddedEmail());
@@ -54,7 +54,7 @@ public class QuestionnairePageTest {
     @Test
     public void fillFormWithoutEmail(){
         questionnairePage
-                .fillName(RandomStringUtils.randomAlphabetic(6))
+                .fillName(Config.randomName)
                 .chooseGenderWomen()
                 .chooseDataCheck11()
                 .chooseDataSelect21()
@@ -65,7 +65,7 @@ public class QuestionnairePageTest {
     @Test
     public void fillFormWithoutName(){
         questionnairePage
-                .fillEmail(RandomStringUtils.randomAlphabetic(4) + "@protei.ru")
+                .fillEmail(Config.randomEmail)
                 .chooseGenderWomen()
                 .chooseDataCheck11()
                 .chooseDataSelect23()
@@ -76,7 +76,7 @@ public class QuestionnairePageTest {
     @Test
     public void fillFormWithWrongEmail(){
         questionnairePage
-                .fillEmail("protei.ru")
+                .fillEmail(Config.invalidEmail)
                 .fillName(RandomStringUtils.randomAlphabetic(6))
                 .chooseGenderMen()
                 .chooseDataCheck12()

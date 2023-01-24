@@ -92,10 +92,13 @@ public class QuestionnairePage {
     }
     public QuestionnairePage clickSubmitButton(){
         submitButton.click();
-        new WebDriverWait(driver, 3)
-                .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".uk-margin.uk-modal-content")));
         return this;
     }
+    public QuestionnairePage clickSubmitButtonWithWat(){
+        submitButton.click();
+        new WebDriverWait(driver, 3)
+                .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".uk-margin.uk-modal-content")));
+        return this;}
     public QuestionnairePage clickOkButton(){
         okButton.click();
         return this;

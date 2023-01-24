@@ -53,14 +53,14 @@ public class AuthPageTest {
     }
     @Test
     public void AuthWithWrongEmail() {
-        authPage.fillAuthPage(RandomStringUtils.randomAlphabetic(4) + "@protei.ru", Config.getPassword())
+        authPage.fillAuthPage(Config.randomEmail, Config.getPassword())
                 .authButtonClick();
         boolean result = authPage.authSuccess();
         assertFalse(result);
     }
     @Test
     public void AuthWithWrongPassword() {
-        authPage.fillAuthPage(Config.getEmail(),RandomStringUtils.randomAlphabetic(4)).authButtonClick();
+        authPage.fillAuthPage(Config.getEmail(),Config.randomPassword).authButtonClick();
         boolean result = authPage.authSuccess();
         assertFalse(result);
     }
