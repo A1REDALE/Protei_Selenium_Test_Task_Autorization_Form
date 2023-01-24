@@ -47,15 +47,11 @@ public class QuestionnairePageTest {
                 .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".uk-margin.uk-modal-content")));
         boolean result = questionnairePage.addDataConfirm();
         assertTrue(result);
-        assertEquals(driver.findElement(By.xpath(".//*[@id='dataEmail']")).getAttribute("value"),
-                driver.findElement(By.xpath(".//*[@id='dataTable']/tbody/tr/td[1]")).getText());
-        assertEquals(driver.findElement(By.xpath(".//*[@id='dataName']")).getAttribute("value"),
-                driver.findElement(By.xpath(".//*[@id='dataTable']/tbody/tr/td[2]")).getText());
-        assertEquals(driver.findElement(By.xpath(".//*[@id='dataGender']")).getAttribute("value"),
-                driver.findElement(By.xpath(".//*[@id='dataTable']/tbody/tr/td[3]")).getText());
-        assertEquals(("1.1"),driver.findElement(By.xpath(".//*[@id='dataTable']/tbody/tr/td[4]")).getText());
-        assertEquals("2.3", driver.findElement(By.xpath(".//*[@id='dataTable']/tbody/tr/td[5]")).getText());
-
+        assertEquals(questionnairePage.checkInputEmail(), questionnairePage.getAddedEmail());
+        assertEquals(questionnairePage.checkInputName(), questionnairePage.getAddedName());
+        assertEquals(questionnairePage.checkInputGender(),questionnairePage.checkInputGender());
+        assertEquals(("1.1"),questionnairePage.getAddedDataCheck());
+        assertEquals("2.3", questionnairePage.getAddedDataSelect());
     }
     @Test
     public void fillFormWithoutEmail(){

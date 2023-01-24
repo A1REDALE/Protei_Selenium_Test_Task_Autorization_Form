@@ -1,6 +1,7 @@
 package page_objects;
 
 import config.Config;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -45,9 +46,16 @@ public class QuestionnairePage {
         inputEmail.sendKeys(email);
         return this;
     }
+    public String checkInputEmail(){
+       return inputEmail.getAttribute("value");
+
+    }
     public QuestionnairePage fillName(String name){
         inputName.sendKeys(name);
         return this;
+    }
+    public String checkInputName(){
+        return inputName.getAttribute("value");
     }
     public QuestionnairePage chooseGenderMen(){
         chooseGender.click();
@@ -56,6 +64,9 @@ public class QuestionnairePage {
     public QuestionnairePage chooseGenderWomen(){
         chooseGender.sendKeys(Keys.DOWN);
         return this;
+    }
+    public String checkInputGender(){
+        return inputEmail.getAttribute("value");
     }
     public QuestionnairePage chooseDataCheck11(){
         dataCheck11.click();
@@ -84,6 +95,21 @@ public class QuestionnairePage {
     public QuestionnairePage clickOkButton(){
         okButton.click();
         return this;
+    }
+    public String getAddedEmail(){
+        return driver.findElement(By.xpath(".//*[@id='dataTable']/tbody/tr/td[1]")).getText();
+    }
+    public String getAddedName(){
+        return driver.findElement(By.xpath(".//*[@id='dataTable']/tbody/tr/td[2]")).getText();
+    }
+    public String getAddedGender(){
+        return driver.findElement(By.xpath(".//*[@id='dataTable']/tbody/tr/td[3]")).getText();
+    }
+    public String getAddedDataCheck(){
+        return driver.findElement(By.xpath(".//*[@id='dataTable']/tbody/tr/td[4]")).getText();
+    }
+    public String getAddedDataSelect(){
+        return driver.findElement(By.xpath(".//*[@id='dataTable']/tbody/tr/td[5]")).getText();
     }
     public boolean addDataConfirm(){
         return addDataConfirm.isDisplayed();
