@@ -48,7 +48,7 @@ public class QuestionnairePage {
         inputEmail.sendKeys(email);
         return this;
     }
-    public String checkInputEmail(){
+    public String getInputEmail(){
        return inputEmail.getAttribute("value");
 
     }
@@ -56,7 +56,7 @@ public class QuestionnairePage {
         inputName.sendKeys(name);
         return this;
     }
-    public String checkInputName(){
+    public String getInputName(){
         return inputName.getAttribute("value");
     }
     public QuestionnairePage chooseGenderMen(){
@@ -67,7 +67,7 @@ public class QuestionnairePage {
         chooseGender.sendKeys(Keys.DOWN);
         return this;
     }
-    public String checkInputGender(){
+    public String getInputGender(){
         return chooseGender.getAttribute("value");
     }
     public QuestionnairePage chooseDataCheck11(){

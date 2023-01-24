@@ -41,9 +41,9 @@ public class QuestionnairePageTest {
                 .clickSubmitButtonWithWait();
         boolean result = questionnairePage.addDataConfirm();
         assertTrue(result);
-        assertEquals(questionnairePage.checkInputEmail(), questionnairePage.getAddedEmail());
-        assertEquals(questionnairePage.checkInputName(), questionnairePage.getAddedName());
-        assertEquals(questionnairePage.checkInputGender(),questionnairePage.getAddedGender());
+        assertEquals(questionnairePage.getInputEmail(), questionnairePage.getAddedEmail());
+        assertEquals(questionnairePage.getInputName(), questionnairePage.getAddedName());
+        assertEquals(questionnairePage.getInputGender(),questionnairePage.getAddedGender());
         assertEquals("1.1",questionnairePage.getAddedDataCheck());
         assertEquals("2.3", questionnairePage.getAddedDataSelect());
     }
