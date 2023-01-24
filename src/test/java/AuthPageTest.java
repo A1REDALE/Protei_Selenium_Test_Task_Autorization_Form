@@ -1,6 +1,5 @@
 import config.Config;
 
-import org.apache.maven.surefire.shared.lang3.RandomStringUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
