@@ -66,7 +66,7 @@ public class QuestionnairePage {
         return this;
     }
     public String checkInputGender(){
-        return inputEmail.getAttribute("value");
+        return chooseGender.getAttribute("value");
     }
     public QuestionnairePage chooseDataCheck11(){
         dataCheck11.click();

@@ -49,7 +49,7 @@ public class QuestionnairePageTest {
         assertTrue(result);
         assertEquals(questionnairePage.checkInputEmail(), questionnairePage.getAddedEmail());
         assertEquals(questionnairePage.checkInputName(), questionnairePage.getAddedName());
-        assertEquals(questionnairePage.checkInputGender(),questionnairePage.checkInputGender());
+        assertEquals(questionnairePage.checkInputGender(),questionnairePage.getAddedGender());
         assertEquals(("1.1"),questionnairePage.getAddedDataCheck());
         assertEquals("2.3", questionnairePage.getAddedDataSelect());
     }
