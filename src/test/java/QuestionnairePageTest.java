@@ -43,8 +43,6 @@ public class QuestionnairePageTest {
                 .chooseDataCheck11()
                 .chooseDataSelect23()
                 .clickSubmitButton();
-        new WebDriverWait(driver, 3)
-                .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".uk-margin.uk-modal-content")));
         boolean result = questionnairePage.addDataConfirm();
         assertTrue(result);
         assertEquals(questionnairePage.checkInputEmail(), questionnairePage.getAddedEmail());

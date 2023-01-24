@@ -7,6 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class QuestionnairePage {
     public QuestionnairePage(WebDriver driver){
@@ -90,6 +92,8 @@ public class QuestionnairePage {
     }
     public QuestionnairePage clickSubmitButton(){
         submitButton.click();
+        new WebDriverWait(driver, 3)
+                .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".uk-margin.uk-modal-content")));
         return this;
     }
     public QuestionnairePage clickOkButton(){
