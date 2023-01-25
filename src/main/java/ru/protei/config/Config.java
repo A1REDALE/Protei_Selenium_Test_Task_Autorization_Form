@@ -6,17 +6,17 @@ public class Config {
     public static final String EMPTY_FIELD = "";
     public static final String EMAIL = "test@protei.ru";
     public static final String PASSWORD = "test";
-    private static final String randomEmail = RandomStringUtils.randomAlphabetic(4) + "@protei.ru";
-    private static final String randomName = RandomStringUtils.randomAlphabetic(6);
-    private static final String randomPassword = RandomStringUtils.randomAlphabetic(4);
-    public static final String invalidEmail = "protei.ru";
+    private static final String RANDOM_EMAIL = RandomStringUtils.randomAlphabetic(4) + "@protei.ru";
+    private static final String RANDOM_NAME = RandomStringUtils.randomAlphabetic(6);
+    private static final String RANDOM_PASSWORD = RandomStringUtils.randomAlphabetic(4);
+    public static final String INVALID_EMAIL = "protei.ru";
     public static String getRandomEmail() {
-        return randomEmail;
+        return RANDOM_EMAIL;
     }
     public static String getRandomName() {
-        return randomName;
+        return RANDOM_NAME;
     }
     public static String getRandomPassword() {
-        return randomPassword;
+        return RANDOM_PASSWORD;
     }
 }

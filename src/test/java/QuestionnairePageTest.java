@@ -74,7 +74,7 @@ public class QuestionnairePageTest {
     @Test
     public void fillFormWithWrongEmail(){
         questionnairePage
-                .fillEmail(Config.invalidEmail)
+                .fillEmail(Config.INVALID_EMAIL)
                 .fillName(Config.getRandomName())
                 .chooseGenderMen()
                 .chooseDataCheck12()

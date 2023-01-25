@@ -50,7 +50,7 @@ public class AuthPageTest {
     }
     @Test
     public void AuthWithWrongEmail() {
-        authPage.fillAuthPage(Config.invalidEmail, Config.PASSWORD)
+        authPage.fillAuthPage(Config.INVALID_EMAIL, Config.PASSWORD)
                 .authButtonClick();
         boolean result = authPage.authSuccess();
         assertFalse(result);
