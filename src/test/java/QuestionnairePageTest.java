@@ -1,12 +1,12 @@
-import config.Config;
+import ru.protei.config.Config;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import page_objects.AuthPage;
-import page_objects.QuestionnairePage;
+import ru.protei.page_objects.AuthPage;
+import ru.protei.page_objects.QuestionnairePage;
 import java.util.concurrent.TimeUnit;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -23,7 +23,7 @@ public class QuestionnairePageTest {
         driver.manage().window().maximize();
         authPage = new AuthPage(driver);
         questionnairePage = new QuestionnairePage(driver);
-        authPage.fillAuthPage(Config.getEmail(), Config.getPassword()).authButtonClick();
+        authPage.fillAuthPage(Config.EMAIL, Config.PASSWORD).authButtonClick();
     }
     @After
     public void Teardown() {
@@ -33,8 +33,8 @@ public class QuestionnairePageTest {
     @Test
     public void allFieldsAddCorrect(){
         questionnairePage
-                .fillEmail(Config.randomEmail)
-                .fillName(Config.randomName)
+                .fillEmail(Config.getRandomEmail())
+                .fillName(Config.getRandomName())
                 .chooseGenderWomen()
                 .chooseDataCheck11()
                 .chooseDataSelect23()
@@ -50,7 +50,8 @@ public class QuestionnairePageTest {
     @Test
     public void fillFormWithoutEmail(){
         questionnairePage
-                .fillName(Config.randomName)
+                .fillEmail(Config.EMPTY_FIELD)
+                .fillName(Config.getRandomName())
                 .chooseGenderWomen()
                 .chooseDataCheck11()
                 .chooseDataSelect21()
@@ -61,7 +62,8 @@ public class QuestionnairePageTest {
     @Test
     public void fillFormWithoutName(){
         questionnairePage
-                .fillEmail(Config.randomEmail)
+                .fillEmail(Config.getRandomEmail())
+                .fillName(Config.EMPTY_FIELD)
                 .chooseGenderWomen()
                 .chooseDataCheck11()
                 .chooseDataSelect23()
@@ -73,7 +75,7 @@ public class QuestionnairePageTest {
     public void fillFormWithWrongEmail(){
         questionnairePage
                 .fillEmail(Config.invalidEmail)
-                .fillName(Config.randomName)
+                .fillName(Config.getRandomName())
                 .chooseGenderMen()
                 .chooseDataCheck12()
                 .chooseDataSelect22()

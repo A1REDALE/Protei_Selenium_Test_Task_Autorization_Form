@@ -1,15 +1,14 @@
-import config.Config;
+import ru.protei.config.Config;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import page_objects.AuthPage;
+import ru.protei.page_objects.AuthPage;
 import java.util.concurrent.TimeUnit;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-
 
 public class AuthPageTest {
     WebDriver driver;
@@ -25,41 +24,40 @@ public class AuthPageTest {
     public void Teardown() {
         driver.quit();
     }
-
     @Test
     public void authWithCorrectFields(){
-        authPage.fillAuthPage(Config.getEmail(), Config.getPassword()).authButtonClick();
+        authPage.fillAuthPage(Config.EMAIL, Config.PASSWORD).authButtonClick();
         boolean result = authPage.authSuccess();
         assertTrue(result);
     }
     @Test
     public void AuthWithoutEmail(){
-        authPage.fillAuthPage(Config.getEmptyField(),Config.getPassword()).authButtonClick();
+        authPage.fillAuthPage(Config.EMPTY_FIELD,Config.PASSWORD).authButtonClick();
         boolean result = authPage.authSuccess();
         assertFalse(result);
     }
     @Test
     public void AuthWithoutPassword(){
-        authPage.fillAuthPage(Config.getEmail(),Config.getEmptyField()).authButtonClick();
+        authPage.fillAuthPage(Config.EMAIL,Config.EMPTY_FIELD).authButtonClick();
         boolean result = authPage.authSuccess();
         assertFalse(result);
     }
     @Test
     public void AuthWithEmptyFields(){
-        authPage.fillAuthPage(Config.getEmptyField(),Config.getEmptyField()).authButtonClick();
+        authPage.fillAuthPage(Config.EMPTY_FIELD,Config.EMPTY_FIELD).authButtonClick();
         boolean result = authPage.authSuccess();
         assertFalse(result);
     }
     @Test
     public void AuthWithWrongEmail() {
-        authPage.fillAuthPage(Config.randomEmail, Config.getPassword())
+        authPage.fillAuthPage(Config.invalidEmail, Config.PASSWORD)
                 .authButtonClick();
         boolean result = authPage.authSuccess();
         assertFalse(result);
     }
     @Test
     public void AuthWithWrongPassword() {
-        authPage.fillAuthPage(Config.getEmail(),Config.randomPassword).authButtonClick();
+        authPage.fillAuthPage(Config.EMAIL,Config.getRandomPassword()).authButtonClick();
         boolean result = authPage.authSuccess();
         assertFalse(result);
     }

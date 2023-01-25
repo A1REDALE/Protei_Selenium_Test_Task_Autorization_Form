@@ -1,6 +1,5 @@
-package page_objects;
+package ru.protei.page_objects;
 
-import config.Config;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -14,7 +13,6 @@ public class QuestionnairePage {
     public QuestionnairePage(WebDriver driver){
         this.driver =driver;
         PageFactory.initElements(driver,this);
-        driver.get(Config.getURL());
     }
     WebDriver driver;
     @FindBy(xpath = ".//*[@id='dataEmail']")
@@ -50,7 +48,6 @@ public class QuestionnairePage {
     }
     public String getInputEmail(){
        return inputEmail.getAttribute("value");
-
     }
     public QuestionnairePage fillName(String name){
         inputName.sendKeys(name);

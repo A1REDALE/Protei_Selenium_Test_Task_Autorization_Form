@@ -1,6 +1,5 @@
-package page_objects;
+package ru.protei.page_objects;
 
-import config.Config;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,9 +9,10 @@ public class AuthPage {
     public AuthPage (WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver,this);
-        driver.get(Config.getURL());
+        driver.get("file://" + path);
     }
     WebDriver driver;
+    public String path = this.getClass().getClassLoader().getResource("qa-test.html").getPath();
     @FindBy(xpath = ".//*[@id='loginEmail']")
     private WebElement inputEmail;
     @FindBy(xpath = ".//*[@id='loginPassword']")
