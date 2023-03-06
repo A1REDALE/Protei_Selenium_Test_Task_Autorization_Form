@@ -1,12 +1,13 @@
-import ru.protei.config.Config;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import ru.protei.config.Config;
 import ru.protei.page_objects.AuthPage;
+
 import java.util.concurrent.TimeUnit;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 

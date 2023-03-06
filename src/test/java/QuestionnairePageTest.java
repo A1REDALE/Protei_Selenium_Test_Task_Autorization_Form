@@ -8,8 +8,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import ru.protei.page_objects.AuthPage;
 import ru.protei.page_objects.QuestionnairePage;
 import java.util.concurrent.TimeUnit;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+
+import static org.junit.Assert.*;
 
 public class QuestionnairePageTest {
     WebDriver driver;
@@ -41,6 +41,7 @@ public class QuestionnairePageTest {
                 .clickSubmitButtonWithWait();
         boolean result = questionnairePage.addDataConfirm();
         assertTrue(result);
+        questionnairePage.clickOkButton();
         assertEquals(questionnairePage.getInputEmail(), questionnairePage.getAddedEmail());
         assertEquals(questionnairePage.getInputName(), questionnairePage.getAddedName());
         assertEquals(questionnairePage.getInputGender(),questionnairePage.getAddedGender());
